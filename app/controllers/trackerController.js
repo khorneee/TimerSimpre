@@ -16,7 +16,7 @@ angular.module('appTimeTracker')
 
         $scope.workingProyect =
         {
-            _id: 2,
+            id: generateId(),
             task: 'Prueba3',
             proyect: 'Proyecto2',
             description: 'bla bla',
@@ -32,8 +32,6 @@ angular.module('appTimeTracker')
 
             //workingProyect = $scope.proyects;
             //console.log($scope.proyects)
-
-            //buscar contdores TODO buscar contadores
             //comprobar si hay alguno  si no contador
 
 
@@ -128,8 +126,8 @@ angular.module('appTimeTracker')
             $scope.workingProyect.dateStartFormat = getDateStart($scope.workingProyect);
             $scope.workingProyect.timeSpend = getTime($scope.workingProyect);
 
-            addarray(workingProyect)
-
+            addarray($scope.workingProyect)
+            $scope.workingProyect.id = generateId();
 
             console.log($scope.logs);
         };
@@ -145,6 +143,13 @@ angular.module('appTimeTracker')
         function addarray(object){
             $scope.logs.unshift(object);
         }
+
+        function generateId() {
+            // Math.random should be unique because of its seeding algorithm.
+            // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+            // after the decimal.
+            return parseInt((Math.random() * 100),10);
+        };
 
 
         $scope.resumeTracker = function () {

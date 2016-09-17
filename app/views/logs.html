@@ -12,7 +12,7 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="log in logs track by $index">
+                <tr ng-repeat="log in logs track by id">
                     <td>
                         <span class="time">{{ log.timeSpend }}</span>
                         <span class="date">{{ log.dateStartFormat }}</span>
